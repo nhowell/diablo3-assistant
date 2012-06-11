@@ -38,11 +38,11 @@ $(function(){
 
   });
 
-  test('Storage', function() {
+  test('LocalStorage', function() {
     equal( CharacterList.length, 3, 'There should be 3 Characters stored' );
   });
 
-  test('Order', function() {
+  test('Ordering', function() {
     CharacterList.sort();
     equal( CharacterList.pluck('name').join(), 'Therra,Illidan,Therron', 'Characters should be in the order: Therra, Illidan, Therron' );
     this.therra.save({order: 3});

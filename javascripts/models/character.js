@@ -27,7 +27,9 @@ var Character = Backbone.Model.extend({
   },
 
   initialize: function(attributes) {
-
+    this.items = new Items();
+    this.items.localStorage = new Backbone.LocalStorage('items-' + this.id);
+    this.items.fetch();
   },
 
   // All stats start at this value at (a theoretical) level 0.
@@ -52,8 +54,6 @@ var Character = Backbone.Model.extend({
       return this.dexterity();
     else if (char_class == 'Witch Doctor' || char_class == 'Wizard')
       return this.intelligence();
-    else
-      this.base_primary_stat(); // this should never happen, but just in case
   },
 
   strength: function() {
