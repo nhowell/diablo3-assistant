@@ -81,31 +81,31 @@ var Character = Backbone.Model.extend({
     return this.strength();
   },
 
-  attackes_per_second: function () {
-    return 1;
+  attacks_per_second: function () {
+    return 1; // TODO
   },
 
   critical_hit_chance: function() {
-    return 0.05;
+    return 0.05; // TODO
   },
 
-  critical_hit_damage: function() {
-    return 0.5;
+  critical_hit_bonus: function() {
+    return 0.5; // TODO
   },
 
   damage: function() {
     return (
-      (
-        // Non-critcal hits
-        2.5 * (1 - this.critical_hit_chance()) +
-
-        // Critical hits
-        (2.5 * this.critical_hit_chance()) *
-        (1 + this.critical_hit_damage())
-      )
+      // Weapon damage
+      2.5 // TODO
 
       // Increase by your primary stat
       * (1 + (this.primary_stat() / 100))
+
+      // Critical hits
+      * (1 + (this.critical_hit_chance() * this.critical_hit_bonus()))
+
+      // Attack speed
+      * this.attacks_per_second()
 
       // Round to two decimal places
       ).toFixed(2);
